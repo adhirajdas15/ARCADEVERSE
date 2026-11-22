@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     environment:
@@ -30,12 +30,14 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload ARCADEVERSE website
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
-      - name: Deploy ARCADEVERSE to GitHub Pages
+      - name: Deploy ARCADEVERSE
         id: deployment
         uses: actions/deploy-pages@v4
